@@ -4,6 +4,8 @@ const authRoutes = require("./routes/authRoutes");
 const protect = require("./middleware/authMiddleware");
 const vehicleRoutes = require("./routes/vehicleRoutes");
 const driverRoutes = require("./routes/driverRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
+const tripRoutes = require("./routes/tripRoutes");
 
 require("dotenv").config();
 
@@ -20,6 +22,8 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicles", vehicleRoutes);
 app.use("/api/drivers", driverRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/trips", tripRoutes);
 
 app.get("/api/protected", protect, (req, res) => {
     res.json({
