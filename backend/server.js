@@ -3,6 +3,8 @@ const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
 const protect = require("./middleware/authMiddleware");
 const vehicleRoutes = require("./routes/vehicleRoutes");
+const driverRoutes = require("./routes/driverRoutes");
+
 require("dotenv").config();
 
 
@@ -17,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/vehicles", vehicleRoutes);
+app.use("/api/drivers", driverRoutes);
 
 app.get("/api/protected", protect, (req, res) => {
     res.json({
